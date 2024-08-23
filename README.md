@@ -1,4 +1,8 @@
+
+<img src=./images/c.svg align=left width=90 height=90>
+
 # Learn C++ With Me 
+
 Hey! Welcome to this repository. This is the notes-keeping place for teaching myself C++, modern C++ in specific. it might include random topics and tools but it'll be useful.
 
 ## References used in this repository 📚
