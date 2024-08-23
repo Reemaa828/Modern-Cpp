@@ -1,0 +1,129 @@
+
+# What's a variable?
+it's a name given to a memory location.
+> Whenever a variable is defined in C++, the compiler allocates some memory for that variable based on the data type with which it is declared
+## Naming of a variable
+```c++
+int abc;
+int ABC; //two different variable cause it's a case sensitive language
+int _abc; //valid
+int $abc; //valid
+int abc1; //valid
+```
+# What's a data type?
+A data type determine the the kind of values expected from the data and the kind of operations performed on that data.
+
+## Primitive Built-in Types
+include The arithmetic types and A special type named `void`. 
+The arithmetic types represent **characters**, **integers**, **boolean values**, and **floating-point numbers**. The **void** type has no associated values and can be used in only a few circumstances, most commonly as the **return type for functions** that do not return a value.
+### 1. Arithmetic types
+The arithmetic types are divided into two categories: **integral types** (which include
+character and boolean types) and **floating-point types.**
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/096bdac361de912d3e4de9a6889ce05a/raw/image.png)
+>[!NOTE]
+>The size of variables might be different from those shown in the above table, depending on the **compiler** and the **computer** you are using.
+
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/98fd49e6fe63aee41215d08e4cc735ff/raw/image.png)
+
+- boolean type: represents the truth values true or false
+- char type: represent a number value that corresponds to a character in the basic's machine character set.
+- wchar_t type: represent the machine's extended character set 
+- char16_t/char32_t type: represent the unicode character.
+
+#### Numeric data type
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/3dd4aeb6ea3143e72ecf127db03bed0b/raw/image.png)
+- examples you can do
+```c++
+int x=10;
+short y=10;
+short int z=10;
+long long xx=10;
+long long int zzz=10;
+long v=10;
+long int vv=10;
+```
+# Type modifiers
+datatype modifiers are used with built-in data types to modify the length of data that a particular data type can hold.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/69077a7a0fce8e2fd697b5086d8820a0/raw/image.png)
+- A **signed type** represents negative or positive numbers (including
+zero). the range is divided evenly for example: ([-2^(n-1), -1] to [0, 2^(n-1)-1]).
+- an **unsigned type** represents only values greater than or equal to zero. ([0,2^(n)-1]).
+- The types int, short, long, and long long are all signed by default.
+- We obtain the corresponding unsigned type by adding unsigned to the type.
+- The type unsigned int may be abbreviated as unsigned.
+- `char` can be unsigned or signed,  it's compiler dependent.
+```c++
+unsigned int x=10;
+unsigned zz=10;
+cout << sizeof(x) <<endl << sizeof(zz) << endl;
+```
+
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/581f40be4fa58283be08b6dfc7ce72ef/raw/image.png)
+
+
+# Type conversions
+type conversions happen automatically when we use an object of one type
+where an object of another type is expected.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/864fb6c79af4fe4cb9a263679c184ea6/raw/image.png)
+- If we assign an out-of-range value to an object of unsigned type, the result is
+the remainder of the value modulo the number of values the target type can
+hold. for example:
+-1 % 256 =255 for unsigned char ... 
+-1 % 2^32 =  4294967295 for unsigned char ...
+- Precision may be lost if the integer has more bits than the floating-point object can accommodate. 
+- If we assign an out-of-range value to an object of signed type, the result is undefined.
+## Expressions using unsigned with signed
+if we use both unsigned and int values in an arithmetic expression, the int value ordinarily is converted to unsigned. Converting an int to unsigned executes the same way as if we assigned the int to an unsigned.
+for example:
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/9b2985345526e49bd97448b7142e3324/raw/image.png)
+the int value -42 is converted to unsigned before the addition is done. Converting a negative number to unsigned behaves exactly as if we had attempted to assign that negative value to an unsigned object. *calculations made*
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/0086b9504b8c9d57b144fa518bbf75fd/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/4897ea906d99ee981dc44b722ecee8e1/raw/image.png)
+Regardless of whether one or both operands are unsigned, if we subtract a value from an unsigned, we must be sure that the result cannot be negative. *calculations made*
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/e0f8b6b590683080902d6829069382eb/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/7de52fac07ca0134722c5d1fbf300435/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/2eb46e31dd2b5f4d0ac139b167915812/raw/image.png)
+
+# Literals
+Every literal has a type. The form and value of a literal determine its type.
+## Integer and Floating-Point Literals
+- We can write an integer literal using decimal, octal, or hexadecimal notation. ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/bb597a694973d06631f7f23db162a82d/raw/image.png)
+- By default, decimal literals are signed whereas octal and hexadecimal literals can be either signed or unsigned types.
+- A decimal literal has the smallest type of int, long, or long long (i.e., the first type in this list) in which the literal’s value fits. Octal and hex-decimal literals have the smallest type of int, unsigned int, long, unsigned long, long long, or unsigned long long in which the literal’s value fits.
+>**Type Selection Process:**
+>
+>- When you write a decimal literal in C++, the compiler first tries to fit the value into an `int`.
+>- If the value is too large to fit into an `int`, the compiler then tries to fit it into a `long`.
+>- If it's still too large for a `long`, the compiler will finally try to fit it into a `long long`.
+>- **Summary:** The type of a decimal literal is the smallest of `int`, `long`, or `long long` that can hold the value.
+-  There are no literals of type short
+![Screenshot from 2024-08-23 23-44-49.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/1419fee566c309af953f233cb6748acb/raw/Screenshot%20from%202024-08-23%2023-44-49.png)
+- we can override these defaults by using a **suffix**.
+- Floating-point literals include either a decimal point or an exponent specified using scientific notation
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/49e647e6854c94ebb1a8ec8bf8896320/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/0467f3ca8240afb30963e14f58c06dde/raw/image.png)
+## Character and Character String Literals
+
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/a168d5460df7a097b8bff5b91f740ea2/raw/image.png)
+- The compiler appends a null character (’\0’) to every string literal.
+- Two string literals that appear adjacent to one another and that are separated only by spaces, tabs, or newlines are concatenated into a single literal. We use this form of literal when we need to write a literal that would otherwise be too large to fit comfortably on a single line.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/c0ded3be3d10a9a893000ee7b4e67f80/raw/image.png)
+## Boolean and Pointer Literals
+- The words true and false are literals of type bool:
+		`bool test = false;`
+- The word `nullptr` is a pointer literal.
+# Escape Sequence
+when there are characters that have special meaning in the language we can't use it directly.
+so we use escape sequences, they are non-printable.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/edc73ebba23a427ade37ffa09e8efdf4/raw/image.png)
+- We use an escape sequence as if it were a single character.
+## Generalized escape sequence
+which is `\x` followed by one or more hexadecimal digits or a `\` followed by one, two, or three octal digits. The value represents the numerical value of the character.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/a388c8d3bbc9c449671262c8706eb78a/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/6fdd3a1af184de63af9a8fb1447f7256/raw/image.png)
+
+## Specifying the Type of a Literal
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/69e54f7fac9e61801dcf8960e9504ef9/raw/image.png)
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/823353ce13b4c770d9a371b5b9688a05/raw/image.png)
+
+
