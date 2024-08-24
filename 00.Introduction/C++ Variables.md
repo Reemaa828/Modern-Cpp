@@ -1,0 +1,93 @@
+# What's a variable?
+A variable gives us a named storage that our program can manipulate.
+```c++
+int x,y,x;
+int x=20,y,z=40;
+int xx {};
+int ss ={90};
+
+```
+___
+# Initializing
+It's giving a value to a variable at the moment of creation.
+```c++
+int x=10;
+int x={10};
+int x{10}; //list initialization
+int x (10);
+```
+>[!WARNING]
+>- Initialization is not assignment. Initialization happens when a variable is given a value when it is created. Assignment obliterates an object’s current value and replaces that value with a new one.
+## using list initialization have limitations
+for example: The compiler will not let us list initialize variables of built-in type if the initializer might lead to the loss of information.
+![](Pasted%20image%2020240824181503.png)
+<!--⚠️failed to create gist, net::ERR_CONNECTION_RESET-->
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/e42b126cdad7e961dc10a3bcab4c0a57/raw/image.png)
+___
+# Variable Definition, Declaration, Initialization
+## Initialization: giving a variable a value at the time of creation.
+## Declaration: makes a name known to the program.
+## Definition: setting a value in memory for a name.
+
+>- **A variable declaration** specifies the type and name of a variable. **A variable**
+**definition** is a declaration. In addition to specifying the name and type, a definition
+also allocates storage and may provide the variable with an initial value.
+
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/9ba4b9704bc8000e9c4817a7bb32532b/raw/image.png)
+>[!TIP]
+>- You can't redefine an `extern` local variable
+>-  ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/8765c0877cd20289f11fe36aeba5cfcc/raw/image.png)
+>- but you can redefine an `extern` global variable, it will overrides the keyword `extern`
+>- ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/1060e3fcfe07075971e2f6c156069b14/raw/image.png)
+>- Variables must be defined exactly once but can be declared many times.
+
+____
+# Default Initialization
+if the variable is not explicitly initialized, the variable is given a default value. this value depends on the type of variable and where it's defined.
+- A variable defined anywhere outside a function body is initialized to **ZERO**.
+- Variables of built-in type defined inside a function are uninitialized. The value of an uninitialized variable of built-in type is **undefined**.
+>[!NOTE]
+>- Each class controls how we initialize objects of that class type. In particular, it is up to the class whether we can define objects of that type without an initializer. If we can, the class determines what value the resulting object will have. Most classes let us define objects without explicit initializers.
+
+>[!TIP]
+>- C++ is a **statically typed language**, which means that the type of the variable is checked at compile time. this process is called type checking.
+>- the compiler need to know the type to check if the operation done of the variable is supported by the type or not, if not error messages appear.
+>- so you need to declare the type of the variable before using it.
+
+____
+
+# Identifiers
+- Identifiers in C++ can be composed of letters, digits, and the underscore character.
+- The language imposes no limit on name length.
+- Identifiers must begin with either a letter or an underscore. 
+- Identifiers are case-sensitive; upper- and lowercase letters.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/56c20b06242787663863e8935e000da7/raw/image.png)
+- The identifiers we define in our own programs may not contain two consecutive underscores. nor can an identifier begin with an underscore followed immediately by an uppercase letter.
+- Identifiers defined outside a function may not begin with an underscore.
+## Conventions for variable names
+- variable names should usually be in small letters.
+- visually distinguish between two word. for example: `student_loan`, `studentLoan`.
+- An identifier should give some indication of its meaning.
+- Naming conventions are most useful when followed consistently.
+____
+
+# Scope 
+A scope is a part of the program in which a name has a particular meaning.
+- Most scopes in C++ are delimited by curly braces.
+- Names are visible from the point where they are declared until the end of the scope in which the declaration appears.
+for example:
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/488b9686ed88aa3144e10af1fb33f6a1/raw/image.png)
+> - The name main is defined outside any curly braces. The name main—like most
+> names defined outside a function—has **global scope**. Once declared, names at the
+> global scope are accessible throughout the program. 
+> - The name sum is defined within the scope of the block that is the body of the main function. It is accessible from its point of declaration throughout the rest of the main function but not outside of it. The variable sum has **block scope**. 
+> - The name val is defined in the scope of the for statement. It can be used in that statement but not elsewhere in main.
+## Nested Scope
+Scopes can contain other scopes. The contained (or nested) scope is referred to as
+an **inner scope**, the containing scope is the **outer scope**.
+- Names declared in the outer scope can also be redefined in an inner scope.
+![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/cfccc75880f4f7757de5dfc738f13f3c/raw/image.png)
+
+> - Output #1 appears before the local definition of reused. Therefore, this output statement uses the name reused that is defined in the global scope. This statement prints 42 0.
+> - Output #2 occurs after the local definition of reused. The local reused is now in scope. Thus, this second output statement uses the local object named reused rather than the global one and prints 0 0.
+> - Output #3 uses the scope operator to override the default scoping rules. The global scope has no name. Hence, when the scope operator has an empty left-hand side, it is a request to fetch the name on the right-hand side from the global scope. Thus, this expression uses the global reused and prints 42 0.
