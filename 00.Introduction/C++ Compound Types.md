@@ -13,8 +13,10 @@ A reference defines an alternative name to an object.A reference type “refers 
 - also any operation done to the object that's bounded to it appear on the reference.
 <!--⚠️failed to create gist, net::ERR_CONNECTION_RESET-->
 ![](Pasted%20image%2020240824211259.png)
-- when using a reference as an initializer 
+- when using a reference as an initializer
+  
 ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/58d6a88672a695cde60f9e6cb15acbba/raw/image.png)
+
 - the type of a reference and the object to which the reference refers must match exactly.
 - Because references are not objects, they don’t have addresses of it's own.
 ```c++
@@ -45,7 +47,9 @@ int *ptr = &ref; // ptr is a pointer to the address of x (since ref is an alias 
 
 ```
 - A pointer holds the address of another object.
+  
 ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/efddd361cdd0ec65de1dfb8e9f2d8f1e/raw/image.png)
+
 # Pointer values
 1. Point to an object:
 ```c++
@@ -89,7 +93,9 @@ int &r1 = *p;
 
 # Void Pointer
 The type void* is a special pointer type that can hold the address of any object. Like any other pointer, a void* pointer holds an address, but the type of the object at that address is unknown.
+
 ![image.png](https://itg.singhinder.com?url=https://gist.githubusercontent.com/Reemaa828/3ff642f60bede06deb1c60333359832f/raw/image.png)
+
 >[!TIP]
 >- Using a void pointer has it's limitation since the type of object is unknown we cannot perform operations on it.
 >![](Pasted%20image%2020240825005839.png)<!--⚠️failed to create gist, net::ERR_CONNECTION_RESET-->
